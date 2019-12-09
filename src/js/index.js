@@ -8,5 +8,6 @@ canvas1.width=parseInt(contentSize.getPropertyValue('width'));
 canvas1.height=parseInt(contentSize.getPropertyValue('height'));
 canvas2.width=parseInt(contentSize.getPropertyValue('width'));
 canvas2.height=parseInt(contentSize.getPropertyValue('height'));
+console.log(canvas2.width, canvas2.height);
 
 
