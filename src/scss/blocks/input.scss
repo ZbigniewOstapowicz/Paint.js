@@ -8,12 +8,12 @@
     z-index: 3;
     position: relative;
     font-family: sans-serif;
+    flex-wrap: wrap;
 
     .paint-size {
         cursor: pointer;
     }
 
-    /* informacja o wartości range. Domyślnie range czegoś takiego nie ma */
     .paint-size-val {
         min-width: 2.3rem;
         border-radius: 3px;
