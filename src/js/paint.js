@@ -50,6 +50,9 @@ class Paint {
         } else if (button.classList.contains("drawRect")) {
           button.classList.add("active");
           this.drawRectangel();
+        } else if (button.classList.contains("drawCircel")) {
+          button.classList.add("active");
+          this.drawCircel();
         }
         for (const ele of this.buttons) {
           if (ele != e.currentTarget) {
@@ -182,7 +185,7 @@ class Paint {
       ev.preventDefault();
       if (this.rect) {
         this.positionMobileEnd(ev);
-         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.beginPath();
         this.ctx.strokeRect(
           this.rect.x0,
@@ -209,6 +212,59 @@ class Paint {
         );
         this.ctx.moveTo(this.rect.x0, this.rect.y0);
         this.ctx.lineTo(this.rect.x1, this.rect.y1);
+        this.ctx.closePath();
+      }
+    };
+
+    this.canvas.ontouchend = ev => {
+      this.ctx2.drawImage(this.canvas, 0, 0);
+      this.rect = null;
+    };
+
+    this.canvas.onmouseup = ev => {
+      this.ctx2.drawImage(this.canvas, 0, 0);
+      this.rect = null;
+    };
+  }
+  drawCircel() {
+    this.canvas.ontouchstart = ev => {
+      this.positionMobileStart(ev);
+    };
+    this.canvas.onmousedown = ev => {
+      this.positionStart(ev);
+    };
+
+    this.canvas.ontouchmove = ev => {
+      ev.preventDefault();
+      if (this.rect) {
+        this.positionMobileEnd(ev);
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.beginPath();
+        this.ctx.arc(
+          this.rect.x0,
+          this.rect.y0,
+          Math.abs(this.rect.x1 - this.rect.x0),
+          0,
+          2 * Math.PI
+        );
+        this.ctx.stroke();
+        this.ctx.closePath();
+      }
+    };
+
+    this.canvas.onmousemove = ev => {
+      if (this.rect) {
+        this.positionEnd(ev);
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.beginPath();
+        this.ctx.arc(
+          this.rect.x0,
+          this.rect.y0,
+          Math.abs(this.rect.x1 - this.rect.x0),
+          0,
+          2 * Math.PI
+        );
+        this.ctx.stroke();
         this.ctx.closePath();
       }
     };
