@@ -47,6 +47,9 @@ class Paint {
         } else if (button.classList.contains("drawLine")) {
           button.classList.add("active");
           this.drawLine();
+        } else if (button.classList.contains("drawRect")) {
+          button.classList.add("active");
+          this.drawRectangel();
         }
         for (const ele of this.buttons) {
           if (ele != e.currentTarget) {
@@ -160,6 +163,62 @@ class Paint {
       // this.ctx.strokeRect(this.rect.x0, this.rect.y0,
       //     this.rect.x1 - this.rect.x0, this.rect.y1 - this.rect.y0);
       //   this.ctx.stroke();
+      this.ctx2.drawImage(this.canvas, 0, 0);
+      this.rect = null;
+    };
+  }
+  drawRectangel() {
+    this.canvas.ontouchstart = ev => {
+      this.positionMobileStart(ev);
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.beginPath();
+    };
+    this.canvas.onmousedown = ev => {
+      this.positionStart(ev);
+      this.ctx.beginPath();
+    };
+
+    this.canvas.ontouchmove = ev => {
+      ev.preventDefault();
+      if (this.rect) {
+        this.positionMobileEnd(ev);
+         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.beginPath();
+        this.ctx.strokeRect(
+          this.rect.x0,
+          this.rect.y0,
+          this.rect.x1 - this.rect.x0,
+          this.rect.y1 - this.rect.y0
+        );
+        this.ctx.moveTo(this.rect.x0, this.rect.y0);
+        this.ctx.lineTo(this.rect.x1, this.rect.y1);
+        this.ctx.closePath();
+      }
+    };
+
+    this.canvas.onmousemove = ev => {
+      if (this.rect) {
+        this.positionEnd(ev);
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.beginPath();
+        this.ctx.strokeRect(
+          this.rect.x0,
+          this.rect.y0,
+          this.rect.x1 - this.rect.x0,
+          this.rect.y1 - this.rect.y0
+        );
+        this.ctx.moveTo(this.rect.x0, this.rect.y0);
+        this.ctx.lineTo(this.rect.x1, this.rect.y1);
+        this.ctx.closePath();
+      }
+    };
+
+    this.canvas.ontouchend = ev => {
+      this.ctx2.drawImage(this.canvas, 0, 0);
+      this.rect = null;
+    };
+
+    this.canvas.onmouseup = ev => {
       this.ctx2.drawImage(this.canvas, 0, 0);
       this.rect = null;
     };
