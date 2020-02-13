@@ -12,6 +12,7 @@
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
+    "gulp-deploy-git": "^0.5.3",
     "gulp-sass": "^4.0.2",
     "node-sass": "^4.13.1",
     "webpack-stream": "^5.2.1"

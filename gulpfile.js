@@ -1,5 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var deploy = require('gulp-deploy-git');
+
 const browsersync = require("browser-sync").create();
 const webpack = require('webpack-stream');
 const { spawn } = require('child_process');
@@ -24,8 +26,13 @@ function copyHtml() {
 };
 
 function copyImg() {
-    return gulp.src('src/img/**/*.{gif,jpg,png,svg}')
+    return gulp.src('src/img/**/*.{gif,jpg,png,svg,ico}')
         .pipe(gulp.dest('build/img'))
+};
+
+function copyFavicon() {
+    return gulp.src('src/favicon/**/*.{jpg,png,ico}')
+        .pipe(gulp.dest('build/favicon'))
 };
 
 function styles() {
@@ -46,12 +53,14 @@ function scripts() {
 
 function watchFiles() {
     copyImg();
+    copyFavicon();
     copyHtml();
     styles();
     scripts();
 
     gulp.watch('index.html', copyHtml);
     gulp.watch('src/img/**/*.{gif,jpg,png,svg}', copyImg);
+    gulp.watch('src/favicon/**/*.{png,jpg,ico}', copyFavicon);
     gulp.watch('src/scss/**/*.scss', styles);
     gulp.watch('src/js/**/*.js', scripts);
 
@@ -85,6 +94,12 @@ gulp.task(
         cb();
     })
 );
+gulp.task('deploy', function() {
+  return gulp.src('build/**/*')
+    .pipe(deploy({
+      repository: 'https://github.com/zhevron/gulp-deploy-git.git'
+    }));
+});
 
 gulp.task('default', gulp.series('start'));
 
