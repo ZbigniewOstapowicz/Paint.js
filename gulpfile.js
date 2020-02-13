@@ -25,7 +25,7 @@ function copyHtml() {
 
 function copyImg() {
     return gulp.src('src/img/**/*.{gif,jpg,png,svg}')
-        .pipe(gulp.dest('build'))
+        .pipe(gulp.dest('build/img'))
 };
 
 function styles() {
