@@ -100,7 +100,7 @@ gulp.task('deploy', function() {
       repository: 'https://github.com/ZbigniewOstapowicz/Paint.js',
       prefix: 'build',
       remoteBranch: 'master',
-      branches: ['1.01'],
+      branches: ['develop','1.01'],
       verbose: true,
       debug: true
     }));
