@@ -95,9 +95,14 @@ gulp.task(
     })
 );
 gulp.task('deploy', function() {
-  return gulp.src('build/**/*')
+  return gulp.src('build/**/*',{ read: false })
     .pipe(deploy({
-      repository: 'https://github.com/zhevron/gulp-deploy-git.git'
+      repository: 'https://github.com/ZbigniewOstapowicz/Paint.js',
+      prefix: 'build',
+      remoteBranch: 'master',
+      branches: ['1.01'],
+      verbose: true,
+      debug: true
     }));
 });
 
