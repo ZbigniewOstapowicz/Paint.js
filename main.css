@@ -110,7 +110,8 @@ body {
         margin-left: 10px;
         color: #fff;
         text-align: center;
-        position: relative; }
+        position: relative;
+      line-height: 22px; }
       .paint-bar .wrapperColor-line .lineWeight .paint-size-val:before {
         content: '';
         position: absolute;
