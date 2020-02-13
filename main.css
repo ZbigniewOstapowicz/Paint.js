@@ -111,7 +111,7 @@ body {
         color: #fff;
         text-align: center;
         position: relative;
-      line-height: 22px; }
+        line-height: 22px; }
       .paint-bar .wrapperColor-line .lineWeight .paint-size-val:before {
         content: '';
         position: absolute;
