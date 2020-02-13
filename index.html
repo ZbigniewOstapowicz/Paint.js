@@ -10,42 +10,42 @@
 </head>
 
 <body>
-<div class="paint-bar">
-    <div class="fileOperations">
-        <label for="file" class="btnOpenFile paint-bar__btn">
-            <img src="./img/Open.png" alt="open file">
-            <input type="file" id="file" data-js="openFile" class="inputFile"></input>
-        </label>
-        <button data-js="saveFile" class="paint-bar__btn"><img src="./img/Save.png" alt="save file"></button>
-        <button data-js="clear" class="paint-bar__btn"><img src="./img/Transparent.png" alt="clear"></button>
-    </div>
-    <div class="wrapperColor-line">
-        <label for="color" class="colorInput paint-bar__btn">
-            <img src="./img/Color.png" alt="color">
-            <input type="color" name="color" id="color">
-        </label>
-        <div class="lineWeight">
-            <label for="range"><img src="./img/Brush.png" alt="line wide"></label>
-            <input type="range" class="paint-size" name="range" id="range" min=1 max=50 value="3">
-            <output for="range" class="paint-size-val"></output>
+    <div class="paint-bar">
+        <div class="fileOperations">
+            <label for="file" class="btnOpenFile paint-bar__btn">
+                <img src="./img/Open.png" alt="open file">
+                <input type="file" id="file" data-js="openFile" class="inputFile"></input>
+            </label>
+            <button data-js="saveFile" class="paint-bar__btn"><img src="./img/Save.png" alt="save file"></button>
+            <button data-js="clear" class="paint-bar__btn"><img src="./img/Transparent.png" alt="clear"></button>
+        </div>
+        <div class="wrapperColor-line">
+            <label for="color" class="colorInput paint-bar__btn">
+                <img src="./img/Color.png" alt="color">
+                <input type="color" name="color" id="color">
+            </label>
+            <div class="lineWeight">
+                <label for="range"><img src="./img/brush.png" alt="line wide"></label>
+                <input type="range" class="paint-size" name="range" id="range" min=1 max=50 value="3">
+                <output for="range" class="paint-size-val"></output>
+            </div>
+        </div>
+        <div class="controlsBtn">
+            <button class="paint-bar__btn btn draw active"><img src="./img/Pencil.png" alt="Pencil"></button>
+            <button class="paint-bar__btn btn drawLine"><img src="./img/Line.png" alt="Line"></button>
+            <button class="paint-bar__btn btn drawRect "><img src="./img/Square.png" alt="Square"></button>
+            <button class="paint-bar__btn btn drawCircel"><img src="./img/Circle.png" alt="Circel"></button>
+            <button class="paint-bar__btn btn drawTriangel "><img src="./img/Triangle.png" alt="Triangle"></button>
+            <button class="paint-bar__btn btn fill "><img src="./img/Eraser.png" alt="Eraser"></button>
         </div>
     </div>
-    <div class="controlsBtn">
-        <button class="paint-bar__btn btn draw active"><img src="./img/Pencil.png" alt="Pencil"></button>
-        <button class="paint-bar__btn btn drawLine"><img src="./img/Line.png" alt="Line"></button>
-        <button class="paint-bar__btn btn drawRect "><img src="./img/Square.png" alt="Square"></button>
-        <button class="paint-bar__btn btn drawCircel"><img src="./img/Circle.png" alt="Circel"></button>
-        <button class="paint-bar__btn btn drawTriangel "><img src="./img/Triangle.png" alt="Triangle"></button>
-        <button class="paint-bar__btn btn fill "><img src="./img/Eraser.png" alt="Eraser"></button>
+    <div class="content" data-js="content">
+        <canvas class="canvas1" data-js="canvas1"></canvas>
+        <canvas data-js="canvas2" class="canvas2"></canvas>
     </div>
-</div>
-<div class="content" data-js="content">
-    <canvas class="canvas1" data-js="canvas1"></canvas>
-    <canvas data-js="canvas2" class="canvas2"></canvas>
-</div>
 
 
-<script src="index.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
